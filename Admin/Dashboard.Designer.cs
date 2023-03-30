@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnBooks = new System.Windows.Forms.Button();
             this.btnUsers = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -50,19 +49,20 @@
             this.transactionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grid = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.picFilter = new System.Windows.Forms.PictureBox();
             this.lblEnd = new System.Windows.Forms.Label();
             this.lblStart = new System.Windows.Forms.Label();
             this.date2 = new System.Windows.Forms.DateTimePicker();
             this.date1 = new System.Windows.Forms.DateTimePicker();
             this.btnPrint = new System.Windows.Forms.Button();
-            this.chartsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.picFilter = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.graphsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picFilter)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -77,16 +77,6 @@
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
             this.panel1.Size = new System.Drawing.Size(223, 530);
             this.panel1.TabIndex = 1;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::LibSystem.Properties.Resources.books;
-            this.pictureBox1.Location = new System.Drawing.Point(49, 25);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(120, 93);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
             // 
             // btnBooks
             // 
@@ -208,7 +198,7 @@
             // 
             this.reportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.transactionsToolStripMenuItem,
-            this.chartsToolStripMenuItem});
+            this.graphsToolStripMenuItem});
             this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
             this.reportsToolStripMenuItem.Size = new System.Drawing.Size(89, 25);
             this.reportsToolStripMenuItem.Text = "Reports";
@@ -226,37 +216,37 @@
             this.grid.AllowUserToDeleteRows = false;
             this.grid.AllowUserToResizeColumns = false;
             this.grid.AllowUserToResizeRows = false;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Bookman Old Style", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.grid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.AliceBlue;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Bookman Old Style", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.grid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
             this.grid.BackgroundColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Bookman Old Style", 12F);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.AliceBlue;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Bookman Old Style", 12F);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Bookman Old Style", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grid.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.AliceBlue;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Bookman Old Style", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grid.DefaultCellStyle = dataGridViewCellStyle11;
             this.grid.GridColor = System.Drawing.Color.SteelBlue;
             this.grid.Location = new System.Drawing.Point(238, 95);
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
             this.grid.RowHeadersWidth = 51;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Bookman Old Style", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.grid.RowsDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.AliceBlue;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Bookman Old Style", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.grid.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.grid.RowTemplate.Height = 24;
             this.grid.Size = new System.Drawing.Size(550, 395);
             this.grid.TabIndex = 5;
@@ -273,19 +263,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(597, 49);
             this.panel2.TabIndex = 6;
-            // 
-            // picFilter
-            // 
-            this.picFilter.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.picFilter.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picFilter.Image = global::LibSystem.Properties.Resources.filter;
-            this.picFilter.Location = new System.Drawing.Point(516, 9);
-            this.picFilter.Name = "picFilter";
-            this.picFilter.Size = new System.Drawing.Size(40, 31);
-            this.picFilter.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picFilter.TabIndex = 10;
-            this.picFilter.TabStop = false;
-            this.picFilter.Click += new System.EventHandler(this.picFilter_Click);
             // 
             // lblEnd
             // 
@@ -346,11 +323,35 @@
             this.btnPrint.UseVisualStyleBackColor = false;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
-            // chartsToolStripMenuItem
+            // picFilter
             // 
-            this.chartsToolStripMenuItem.Name = "chartsToolStripMenuItem";
-            this.chartsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.chartsToolStripMenuItem.Text = "Charts";
+            this.picFilter.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.picFilter.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picFilter.Image = global::LibSystem.Properties.Resources.filter;
+            this.picFilter.Location = new System.Drawing.Point(516, 9);
+            this.picFilter.Name = "picFilter";
+            this.picFilter.Size = new System.Drawing.Size(40, 31);
+            this.picFilter.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picFilter.TabIndex = 10;
+            this.picFilter.TabStop = false;
+            this.picFilter.Click += new System.EventHandler(this.picFilter_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::LibSystem.Properties.Resources.books;
+            this.pictureBox1.Location = new System.Drawing.Point(49, 25);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(120, 93);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            // 
+            // graphsToolStripMenuItem
+            // 
+            this.graphsToolStripMenuItem.Name = "graphsToolStripMenuItem";
+            this.graphsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.graphsToolStripMenuItem.Text = "Graphs";
+            this.graphsToolStripMenuItem.Click += new System.EventHandler(this.graphsToolStripMenuItem_Click);
             // 
             // Dashboard
             // 
@@ -368,13 +369,13 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picFilter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -406,6 +407,6 @@
         private System.Windows.Forms.PictureBox picFilter;
         private System.Windows.Forms.Label lblEnd;
         private System.Windows.Forms.Label lblStart;
-        private System.Windows.Forms.ToolStripMenuItem chartsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem graphsToolStripMenuItem;
     }
 }

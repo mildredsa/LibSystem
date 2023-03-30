@@ -1,4 +1,5 @@
 ﻿using DGVPrinterHelper;
+using LibSystem.Admin;
 using LibSystem.Borrower;
 using LibSystem.Manage;
 using System;
@@ -11,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace LibSystem
 {
@@ -42,6 +44,7 @@ namespace LibSystem
             date2.Visible = false;
             lblStart.Visible = false;
             lblEnd.Visible = false;
+            picFilter.Visible = false;
 
             SqlCommand borrowers = new SqlCommand("SELECT * FROM Borrowers", con);
 
@@ -62,6 +65,7 @@ namespace LibSystem
             date2.Visible = false;
             lblStart.Visible = false;
             lblEnd.Visible = false;
+            picFilter.Visible = false;
 
             SqlCommand books = new SqlCommand("SELECT * FROM Books", con);
 
@@ -78,10 +82,11 @@ namespace LibSystem
         {
             con.Open();
 
-            date1.Visible = true;
-            date2.Visible = true;
-            lblStart.Visible = true;
-            lblEnd.Visible = true;
+            date1.Visible = false;
+            date2.Visible = false;
+            lblStart.Visible = false;
+            lblEnd.Visible = false;
+            picFilter.Visible = false;
 
             SqlCommand borrowed = new SqlCommand("SELECT * FROM Borrowed", con);
 
@@ -98,10 +103,11 @@ namespace LibSystem
         {
             con.Open();
 
-            date1.Visible = true;
-            date2.Visible = true;
-            lblStart.Visible = true;
-            lblEnd.Visible = true;
+            date1.Visible = false;
+            date2.Visible = false;
+            lblStart.Visible = false;
+            lblEnd.Visible = false;
+            picFilter.Visible = false;
 
             SqlCommand returned = new SqlCommand("SELECT * FROM Returned", con);
 
@@ -121,7 +127,8 @@ namespace LibSystem
             date1.Visible = false;
             date2.Visible = false;
             lblStart.Visible = false;
-            lblEnd.Visible = false; 
+            lblEnd.Visible = false;
+            picFilter.Visible = false;
 
             SqlCommand users = new SqlCommand("SELECT * FROM Users WHERE Status <> 'Active'", con);
 
@@ -140,6 +147,7 @@ namespace LibSystem
             date2.Visible = false;
             lblStart.Visible = false;
             lblEnd.Visible = false;
+            picFilter.Visible = false;
 
             DialogResult response = MessageBox.Show("Are you sure you want to logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -238,6 +246,11 @@ namespace LibSystem
                 }
             }
 
+        }
+
+        private void graphsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Graphs().Show();
         }
     }
 }
