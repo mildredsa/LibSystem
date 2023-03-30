@@ -22,6 +22,23 @@ namespace LibSystem.Borrower
             this.username = lblUser.Text;
         }
 
+        private void loaddatagrid()
+        {
+            using(SqlConnection con = Database.GetConnection())
+            {
+                con.Open();
+
+                SqlCommand books = new SqlCommand("SELECT * FROM Books", con);
+                books.Parameters.AddWithValue("Genre", cmbGenre.Text);
+
+                SqlDataAdapter adap = new SqlDataAdapter(books);
+                DataTable dt = new DataTable();
+                adap.Fill(dt);
+
+                grid.DataSource = dt;
+            }
+        }
+
         private void btnBorrow_Click(object sender, EventArgs e)
         {
             con.Open();
@@ -41,6 +58,8 @@ namespace LibSystem.Borrower
 
                     if (bookStatus == "Available")
                     {
+                        books.Close();
+
                         SqlCommand chkUser = new SqlCommand("SELECT Username, Status FROM Users WHERE Username = @Username", con);
                         chkUser.Parameters.AddWithValue("Username", username);
 
@@ -52,6 +71,8 @@ namespace LibSystem.Borrower
 
                             if (userStatus == "Active")
                             {
+                                users.Close();
+
                                 SqlCommand updateBooks = new SqlCommand("UPDATE Books SET Status = 'Unavailable', Quantity = Quantity - 1 WHERE [Accession Number] = @AccessionNumber", con);
                                 updateBooks.Parameters.AddWithValue("AccessionNumber", txtNo.Text);
                                 updateBooks.ExecuteNonQuery();
@@ -92,7 +113,7 @@ namespace LibSystem.Borrower
             {
                 MessageBox.Show("Please input an Accession Number", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
+            loaddatagrid();
             con.Close();
         }
 
@@ -113,8 +134,10 @@ namespace LibSystem.Borrower
                 {
                     string bookStatus = books.GetString(1);
 
-                    if (bookStatus == "Unvailable")
+                    if (bookStatus == "Unavailable")
                     {
+                        books.Close();
+
                         SqlCommand chkUser = new SqlCommand("SELECT Username, Status FROM Users WHERE Username = @Username", con);
                         chkUser.Parameters.AddWithValue("Username", username);
 
@@ -126,6 +149,8 @@ namespace LibSystem.Borrower
 
                             if (userStatus == "Active")
                             {
+                                users.Close();
+
                                 SqlCommand updateBooks = new SqlCommand("UPDATE Books SET Status = 'Available', Quantity = Quantity + 1 WHERE [Accession Number] = @AccessionNumber", con);
                                 updateBooks.Parameters.AddWithValue("AccessionNumber", txtNo.Text);
                                 updateBooks.ExecuteNonQuery();
@@ -139,7 +164,7 @@ namespace LibSystem.Borrower
                                 borrowed.Parameters.AddWithValue("AccessionNumber", txtNo.Text);
                                 borrowed.ExecuteNonQuery();
 
-                                MessageBox.Show("Book Successfully Borrowed", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Book Successfully Returned", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else if (userStatus == "Inactive")
                             {
@@ -158,7 +183,7 @@ namespace LibSystem.Borrower
                     }
                     else
                     {
-                        MessageBox.Show("Book has been Borrowed.", "Unavailable", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                        MessageBox.Show("Book has not been Borrowed.", "Unavailable", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                     }
                 }
                 else
@@ -170,39 +195,17 @@ namespace LibSystem.Borrower
             {
                 MessageBox.Show("Please input an Accession Number", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
+            loaddatagrid();
             con.Close();
 
         }
 
-        private void Transaction_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'libSystemDataSet.Books' table. You can move, or remove it, as needed.
-            this.booksTableAdapter.Fill(this.libSystemDataSet.Books);
-
-        }
-
-        private void grid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            con.Open();
-
-            SqlCommand genre = new SqlCommand("SELECT * FROM Books WHERE Genre = @Genre", con);
-            genre.Parameters.AddWithValue("Genre", cmbGenre.Text);
-
-            SqlDataAdapter adap = new SqlDataAdapter();
-            DataTable dt = new DataTable();
-            adap.Fill(dt);
-
-            grid.DataSource = dt;
-
-            con.Close();
-        }
 
         private void picSearch_Click(object sender, EventArgs e)
         {
             con.Open();
 
-            SqlCommand searchCmd = new SqlCommand("SELECT * FROM Books WHERE CONCAT(AccessionNumber, ' ', Title, ' ', Author, ' ', Genre, ' ', Status) LIKE @searchString", con);
+            SqlCommand searchCmd = new SqlCommand("SELECT * FROM Books WHERE CONCAT([Accession Number], ' ', Title, ' ', Author, ' ', Genre, ' ', Status) LIKE @searchString", con);
             searchCmd.Parameters.AddWithValue("searchString", "%" + txtSearch.Text + "%");
             searchCmd.ExecuteNonQuery();
 
@@ -215,11 +218,57 @@ namespace LibSystem.Borrower
             con.Close();
         }
 
+        private void cmbGenre_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            con.Open();
+
+            SqlCommand genre = new SqlCommand("SELECT * FROM Books WHERE Genre = @Genre", con);
+            genre.Parameters.AddWithValue("Genre", cmbGenre.Text);
+
+            SqlDataAdapter adap = new SqlDataAdapter(genre);
+            DataTable dt = new DataTable();
+            adap.Fill(dt);
+
+            grid.DataSource = dt;
+
+            con.Close();
+        }
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            new Login().Show();
-            this.Close();
+            DialogResult response = MessageBox.Show("Are you sure you want to logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (response == DialogResult.Yes)
+            {
+                new Login().Show();
+                this.Close();
+            }
+        }
+
+        private void grid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == grid.Columns["Accession Number"].Index)
+            {
+                DataGridViewRow row = grid.Rows[e.RowIndex];
+                string accessionNo = row.Cells["Accession Number"].Value.ToString();
+                txtNo.Text = accessionNo;
+            }
+        }
+
+        private void Transaction_Load(object sender, EventArgs e)
+        {
+            con.Open();
+
+            SqlCommand books = new SqlCommand("SELECT * FROM Books", con);
+            books.Parameters.AddWithValue("Genre", cmbGenre.Text);
+
+            SqlDataAdapter adap = new SqlDataAdapter(books);
+            DataTable dt = new DataTable();
+            adap.Fill(dt);
+
+            grid.DataSource = dt;
+
+            con.Close();
         }
     }
 

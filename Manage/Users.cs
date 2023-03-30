@@ -26,7 +26,7 @@ namespace LibSystem.Manage
             toolTip.SetToolTip(this.txtUser, "Input User ID.");
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void btnActivate_Click(object sender, EventArgs e)
         {
             con.Open();
 
@@ -59,9 +59,6 @@ namespace LibSystem.Manage
                     MessageBox.Show("User doesn't exist!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
-            
-            
             con.Close();
         }
 
@@ -80,7 +77,7 @@ namespace LibSystem.Manage
 
                 if (chkUser.ExecuteScalar() != null)
                 {
-                    SqlCommand updateBorrowers = new SqlCommand("UPDATE Borrowers SET First Name = @FirstName, Last Name = @LastName, Gender = @Gender WHERE UserID = @UserID", con);
+                    SqlCommand updateBorrowers = new SqlCommand("UPDATE Borrowers SET [First Name] = @FirstName, [Last Name] = @LastName, Gender = @Gender WHERE UserID = @UserID", con);
                     updateBorrowers.Parameters.AddWithValue("UserID", txtUser.Text);
                     updateBorrowers.Parameters.AddWithValue("FirstName", txtF.Text);
                     updateBorrowers.Parameters.AddWithValue("LastName", txtL.Text);
@@ -89,6 +86,7 @@ namespace LibSystem.Manage
 
                     SqlCommand updateUsers = new SqlCommand("UPDATE Users SET Role = @Role WHERE UserID = @UserID", con);
                     updateUsers.Parameters.AddWithValue("UserID", txtUser.Text);
+                    updateUsers.Parameters.AddWithValue("Role", cmbRole.Text);  
                     updateUsers.ExecuteNonQuery();
 
                     MessageBox.Show("Account Successfully Updated!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -141,5 +139,6 @@ namespace LibSystem.Manage
             con.Close();
         }
 
+        
     }
 }

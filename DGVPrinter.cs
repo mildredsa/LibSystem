@@ -1478,14 +1478,14 @@ namespace DGVPrinterHelper //AllocationRequest
         /// Spread the columns porportionally accross the page. Default is false.
         /// Deprecated. Please use the ColumnWidth property
         /// </summary>
-        private bool porportionalcolumns = false;
-        public bool PorportionalColumns
+        private bool proportionalcolumns = false;
+        public bool ProportionalColumns
         {
-            get { return porportionalcolumns; }
+            get { return proportionalcolumns; }
             set
             {
-                porportionalcolumns = value;
-                if (porportionalcolumns)
+                proportionalcolumns = value;
+                if (proportionalcolumns)
                     ColumnWidth = ColumnWidthSetting.Porportional;
                 else
                     ColumnWidth = ColumnWidthSetting.CellWidth;
@@ -1528,9 +1528,9 @@ namespace DGVPrinterHelper //AllocationRequest
             {
                 _rowwidth = value;
                 if (value == ColumnWidthSetting.Porportional)
-                    porportionalcolumns = true;
+                    proportionalcolumns = true;
                 else
-                    porportionalcolumns = false;
+                    proportionalcolumns = false;
             }
         }
 
@@ -2840,7 +2840,7 @@ namespace DGVPrinterHelper //AllocationRequest
 
             // calculate the ratio for porportional columns, use 1 for 
             // non-overridden columns or not porportional
-            if ((porportionalcolumns || ColumnWidthSetting.Porportional == ColumnWidth) &&
+            if ((proportionalcolumns || ColumnWidthSetting.Porportional == ColumnWidth) &&
                 0 < remainingcolwidth)
                 ratio = ((float)printWidth - fixedcolwidth) / (float)remainingcolwidth;
             else

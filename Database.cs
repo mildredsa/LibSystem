@@ -9,7 +9,7 @@ namespace LibSystem
 {
     public static class Database
     {
-        private static string connection = "Data Source=LAPTOP-M3IQH77K\\MSASERVER;Initial Catalog=LibSystem;Integrated Security=True";
+        public static string connection = "Data Source=LAPTOP-M3IQH77K\\MSASERVER;Initial Catalog=LibSystem;Integrated Security=True";
 
         public static SqlConnection GetConnection()
         {

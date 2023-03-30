@@ -64,6 +64,7 @@
     <Compile Include="Borrower\Transaction.Designer.cs">
       <DependentUpon>Transaction.cs</DependentUpon>
     </Compile>
+    <Compile Include="DateFilterMessageBox.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="DGVPrinter.cs" />
     <Compile Include="Dashboard.cs">
@@ -149,6 +150,11 @@
   <ItemGroup>
     <None Include="Resources\profile.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\books.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filter.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

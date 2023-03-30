@@ -107,7 +107,7 @@ namespace LibSystem
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show( "Error: " + ex.Message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Error: " + ex.Message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
 

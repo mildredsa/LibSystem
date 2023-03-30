@@ -31,7 +31,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbRole = new System.Windows.Forms.ComboBox();
-            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnActivate = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.cmbGender = new System.Windows.Forms.ComboBox();
@@ -53,7 +53,7 @@
             this.groupBox1.BackColor = System.Drawing.Color.AliceBlue;
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.cmbRole);
-            this.groupBox1.Controls.Add(this.btnAdd);
+            this.groupBox1.Controls.Add(this.btnActivate);
             this.groupBox1.Controls.Add(this.btnUpdate);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.cmbGender);
@@ -95,20 +95,20 @@
             this.cmbRole.Size = new System.Drawing.Size(330, 25);
             this.cmbRole.TabIndex = 42;
             // 
-            // btnAdd
+            // btnActivate
             // 
-            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(133)))), ((int)(((byte)(66)))));
-            this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Font = new System.Drawing.Font("Bookman Old Style", 8F);
-            this.btnAdd.ForeColor = System.Drawing.SystemColors.InactiveBorder;
-            this.btnAdd.Location = new System.Drawing.Point(97, 398);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(83, 34);
-            this.btnAdd.TabIndex = 40;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = false;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.btnActivate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(133)))), ((int)(((byte)(66)))));
+            this.btnActivate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnActivate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActivate.Font = new System.Drawing.Font("Bookman Old Style", 8F);
+            this.btnActivate.ForeColor = System.Drawing.SystemColors.InactiveBorder;
+            this.btnActivate.Location = new System.Drawing.Point(97, 398);
+            this.btnActivate.Name = "btnActivate";
+            this.btnActivate.Size = new System.Drawing.Size(83, 34);
+            this.btnActivate.TabIndex = 40;
+            this.btnActivate.Text = "Activate";
+            this.btnActivate.UseVisualStyleBackColor = false;
+            this.btnActivate.Click += new System.EventHandler(this.btnActivate_Click);
             // 
             // btnUpdate
             // 
@@ -245,7 +245,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnActivate;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cmbGender;
