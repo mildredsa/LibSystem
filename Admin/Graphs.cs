@@ -63,6 +63,9 @@ namespace LibSystem.Admin
             series.Points.AddXY("Male", maleCount);
             series.Points.AddXY("Female", femaleCount);
 
+            series.Points[0].Color = Color.Blue;   
+            series.Points[1].Color = Color.Pink;
+
             // Remove any existing titles and legends
             chart1.Titles.Clear();
             chart1.Legends.Clear();
@@ -77,26 +80,26 @@ namespace LibSystem.Admin
         private void DisplayPieChart()
         {
             con.Open();
-            SqlCommand cmd = new SqlCommand("SELECT Gender, COUNT(*) AS Borrowers FROM Borrowers WHERE Gender IS NOT NULL GROUP BY Gender", con);
+            SqlCommand cmd = new SqlCommand("SELECT Role, COUNT(*) AS Users FROM Users WHERE Role IS NOT NULL GROUP BY Role", con);
             SqlDataReader reader = cmd.ExecuteReader();
 
             // Initialize variables to hold the counts for male and female borrowers
-            int maleCount = 0;
-            int femaleCount = 0;
+            int a = 0;
+            int b = 0;
 
             // Loop through the results of the query and sum the counts for male and female borrowers
             while (reader.Read())
             {
-                string gender = reader["Gender"].ToString();
-                int count = Convert.ToInt32(reader["Borrowers"]);
+                string roles = reader["Role"].ToString();
+                int count = Convert.ToInt32(reader["Users"]);
 
-                if (gender == "Male")
+                if (roles == "Admin")
                 {
-                    maleCount = count;
+                    a = count;
                 }
-                else if (gender == "Female")
+                else if (roles == "Borrower")
                 {
-                    femaleCount = count;
+                    b = count;
                 }
             }
 
@@ -109,26 +112,26 @@ namespace LibSystem.Admin
             series.ChartType = SeriesChartType.Pie;
 
             // Add the data points for male and female borrowers to the series
-            series.Points.AddXY("Male", maleCount);
-            series.Points[0].LegendText = "Male Borrowers";
+            series.Points.AddXY("Admin", a);
+            series.Points[0].LegendText = "Admin Accounts";
             series.Points[0].Label = "#VALY (#PERCENT{P0})";
-            series.Points.AddXY("Female", femaleCount);
-            series.Points[1].LegendText = "Female Borrowers";
+            series.Points.AddXY("Borrower", b);
+            series.Points[1].LegendText = "Borrower Accounts";
             series.Points[1].Label = "#VALY (#PERCENT{P0})";
 
             // Add the series to the chart and set its title and axis labels
             chart2.Series.Clear();
             chart2.Series.Add(series);
             chart2.Titles.Clear();
-            chart2.Titles.Add("Borrowers by Gender");
-            chart2.ChartAreas[0].AxisX.Title = "Gender";
+            chart2.Titles.Add("Users by Role");
+            chart2.ChartAreas[0].AxisX.Title = "Role";
             chart2.ChartAreas[0].AxisY.Title = "Count";
 
             // Add a legend to the chart and customize its appearance and behavior
             Legend legend = new Legend();
             legend.Docking = Docking.Bottom;
             legend.Alignment = StringAlignment.Center;
-            legend.Title = "Gender";
+            legend.Title = "Role";
             legend.TitleAlignment = StringAlignment.Center;
             legend.TitleFont = new Font("Arial", 12, FontStyle.Bold);
             legend.BackColor = Color.AliceBlue;

@@ -45,6 +45,8 @@ namespace LibSystem
             lblStart.Visible = false;
             lblEnd.Visible = false;
             picFilter.Visible = false;
+            lblGenre.Visible = false;
+            cmbGenre.Visible = false;
 
             SqlCommand borrowers = new SqlCommand("SELECT * FROM Borrowers", con);
 
@@ -66,6 +68,8 @@ namespace LibSystem
             lblStart.Visible = false;
             lblEnd.Visible = false;
             picFilter.Visible = false;
+            lblGenre.Visible = true;
+            cmbGenre.Visible = true;
 
             SqlCommand books = new SqlCommand("SELECT * FROM Books", con);
 
@@ -87,6 +91,8 @@ namespace LibSystem
             lblStart.Visible = false;
             lblEnd.Visible = false;
             picFilter.Visible = false;
+            lblGenre.Visible = false;
+            cmbGenre.Visible = false;
 
             SqlCommand borrowed = new SqlCommand("SELECT * FROM Borrowed", con);
 
@@ -108,6 +114,8 @@ namespace LibSystem
             lblStart.Visible = false;
             lblEnd.Visible = false;
             picFilter.Visible = false;
+            lblGenre.Visible = false;
+            cmbGenre.Visible = false;
 
             SqlCommand returned = new SqlCommand("SELECT * FROM Returned", con);
 
@@ -129,6 +137,8 @@ namespace LibSystem
             lblStart.Visible = false;
             lblEnd.Visible = false;
             picFilter.Visible = false;
+            lblGenre.Visible = false;
+            cmbGenre.Visible = false;
 
             SqlCommand users = new SqlCommand("SELECT * FROM Users WHERE Status <> 'Active'", con);
 
@@ -168,6 +178,9 @@ namespace LibSystem
             date2.Visible = true;
             lblStart.Visible = true;
             lblEnd.Visible = true;
+            picFilter.Visible = true;
+            lblGenre.Visible = false;
+            cmbGenre.Visible = false;
 
             SqlCommand transaction = new SqlCommand("SELECT * FROM Transactions", con);
 
@@ -251,6 +264,22 @@ namespace LibSystem
         private void graphsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new Graphs().Show();
+        }
+
+        private void cmbGenre_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            con.Open();
+
+            SqlCommand genre = new SqlCommand("SELECT * FROM Books WHERE Genre = @Genre", con);
+            genre.Parameters.AddWithValue("Genre", cmbGenre.Text);
+
+            SqlDataAdapter adap = new SqlDataAdapter(genre);
+            DataTable dt = new DataTable();
+            adap.Fill(dt);
+
+            grid.DataSource = dt;
+
+            con.Close();
         }
     }
 }
