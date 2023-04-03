@@ -1,6 +1,6 @@
 ﻿namespace LibSystem
 {
-    partial class Register
+    partial class ChangePassword
     {
         /// <summary>
         /// Required designer variable.
@@ -28,47 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtCPass = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtPass = new System.Windows.Forms.TextBox();
-            this.btnReg = new System.Windows.Forms.Button();
+            this.btnConfirm = new System.Windows.Forms.Button();
+            this.lblUser = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtUser = new System.Windows.Forms.TextBox();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.BackColor = System.Drawing.Color.AliceBlue;
-            this.groupBox1.Controls.Add(this.pictureBox1);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.txtCPass);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.txtPass);
-            this.groupBox1.Controls.Add(this.btnReg);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.txtUser);
-            this.groupBox1.Location = new System.Drawing.Point(11, 10);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(362, 521);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::LibSystem.Properties.Resources.profile;
-            this.pictureBox1.Location = new System.Drawing.Point(105, 31);
+            this.pictureBox1.Location = new System.Drawing.Point(103, 78);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(140, 125);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 50;
+            this.pictureBox1.TabIndex = 42;
             this.pictureBox1.TabStop = false;
             // 
             // label3
@@ -77,10 +55,10 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Bookman Old Style", 9F);
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(41, 319);
+            this.label3.Location = new System.Drawing.Point(42, 335);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(144, 19);
-            this.label3.TabIndex = 49;
+            this.label3.TabIndex = 53;
             this.label3.Text = "Confirm Password";
             // 
             // txtCPass
@@ -89,10 +67,10 @@
             this.txtCPass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCPass.Font = new System.Drawing.Font("Cascadia Code", 8F);
             this.txtCPass.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.txtCPass.Location = new System.Drawing.Point(45, 350);
+            this.txtCPass.Location = new System.Drawing.Point(46, 366);
             this.txtCPass.Name = "txtCPass";
             this.txtCPass.Size = new System.Drawing.Size(272, 23);
-            this.txtCPass.TabIndex = 41;
+            this.txtCPass.TabIndex = 52;
             this.txtCPass.UseSystemPasswordChar = true;
             // 
             // label2
@@ -101,10 +79,10 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Bookman Old Style", 9F);
             this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(41, 251);
+            this.label2.Location = new System.Drawing.Point(42, 267);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(79, 19);
-            this.label2.TabIndex = 40;
+            this.label2.TabIndex = 51;
             this.label2.Text = "Password";
             // 
             // txtPass
@@ -113,76 +91,79 @@
             this.txtPass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPass.Font = new System.Drawing.Font("Cascadia Code", 8F);
             this.txtPass.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.txtPass.Location = new System.Drawing.Point(45, 282);
+            this.txtPass.Location = new System.Drawing.Point(46, 298);
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(272, 23);
-            this.txtPass.TabIndex = 39;
+            this.txtPass.TabIndex = 50;
             this.txtPass.UseSystemPasswordChar = true;
             // 
-            // btnReg
+            // btnConfirm
             // 
-            this.btnReg.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btnReg.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnReg.Font = new System.Drawing.Font("Bookman Old Style", 10F);
-            this.btnReg.Location = new System.Drawing.Point(45, 428);
-            this.btnReg.Name = "btnReg";
-            this.btnReg.Size = new System.Drawing.Size(272, 43);
-            this.btnReg.TabIndex = 38;
-            this.btnReg.Text = "Register";
-            this.btnReg.UseVisualStyleBackColor = false;
-            this.btnReg.Click += new System.EventHandler(this.btnReg_Click);
+            this.btnConfirm.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnConfirm.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnConfirm.Font = new System.Drawing.Font("Bookman Old Style", 10F);
+            this.btnConfirm.Location = new System.Drawing.Point(46, 413);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(272, 43);
+            this.btnConfirm.TabIndex = 54;
+            this.btnConfirm.Text = "Confirm";
+            this.btnConfirm.UseVisualStyleBackColor = false;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
+            // 
+            // lblUser
+            // 
+            this.lblUser.AutoSize = true;
+            this.lblUser.Font = new System.Drawing.Font("Bookman Old Style", 9F);
+            this.lblUser.Location = new System.Drawing.Point(110, 228);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(0, 19);
+            this.lblUser.TabIndex = 55;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Bookman Old Style", 9F);
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(41, 185);
+            this.label1.Location = new System.Drawing.Point(61, 228);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 19);
-            this.label1.TabIndex = 36;
-            this.label1.Text = "Username";
+            this.label1.Size = new System.Drawing.Size(43, 19);
+            this.label1.TabIndex = 56;
+            this.label1.Text = "Hey,";
             // 
-            // txtUser
-            // 
-            this.txtUser.BackColor = System.Drawing.Color.AliceBlue;
-            this.txtUser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtUser.Font = new System.Drawing.Font("Cascadia Code", 8F);
-            this.txtUser.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.txtUser.Location = new System.Drawing.Point(45, 211);
-            this.txtUser.Name = "txtUser";
-            this.txtUser.Size = new System.Drawing.Size(272, 23);
-            this.txtUser.TabIndex = 35;
-            // 
-            // Register
+            // ChangePassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(385, 540);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(361, 522);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblUser);
+            this.Controls.Add(this.btnConfirm);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtCPass);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtPass);
+            this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Register";
+            this.MaximumSize = new System.Drawing.Size(361, 522);
+            this.MinimumSize = new System.Drawing.Size(361, 522);
+            this.Name = "ChangePassword";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtCPass;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtPass;
-        private System.Windows.Forms.Button btnReg;
+        private System.Windows.Forms.Button btnConfirm;
+        private System.Windows.Forms.Label lblUser;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtUser;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -120,5 +120,22 @@ namespace LibSystem
             new Register().Show();
             this.Hide();
         }
+
+        private void lnkChangePass_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtUser.Text))
+            {
+                MessageBox.Show("Please input your username.", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
+            else
+            {
+                string username = txtUser.Text;
+
+                ChangePassword changePassword = new ChangePassword(username);
+                changePassword.Show();
+                this.Hide();
+            }
+            
+        }
     }
 }

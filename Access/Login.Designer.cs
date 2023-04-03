@@ -29,13 +29,14 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtPass = new System.Windows.Forms.TextBox();
             this.btnReg = new System.Windows.Forms.Button();
             this.btnLog = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtUser = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lnkChangePass = new System.Windows.Forms.LinkLabel();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -45,6 +46,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.lnkChangePass);
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtPass);
@@ -57,6 +59,16 @@
             this.groupBox1.Size = new System.Drawing.Size(361, 522);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::LibSystem.Properties.Resources.profile;
+            this.pictureBox1.Location = new System.Drawing.Point(109, 37);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(140, 125);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 41;
+            this.pictureBox1.TabStop = false;
             // 
             // label2
             // 
@@ -131,15 +143,16 @@
             this.txtUser.Size = new System.Drawing.Size(272, 23);
             this.txtUser.TabIndex = 35;
             // 
-            // pictureBox1
+            // lnkChangePass
             // 
-            this.pictureBox1.Image = global::LibSystem.Properties.Resources.profile;
-            this.pictureBox1.Location = new System.Drawing.Point(109, 37);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(140, 125);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 41;
-            this.pictureBox1.TabStop = false;
+            this.lnkChangePass.AutoSize = true;
+            this.lnkChangePass.Location = new System.Drawing.Point(200, 348);
+            this.lnkChangePass.Name = "lnkChangePass";
+            this.lnkChangePass.Size = new System.Drawing.Size(116, 16);
+            this.lnkChangePass.TabIndex = 42;
+            this.lnkChangePass.TabStop = true;
+            this.lnkChangePass.Text = "Forgot Password?";
+            this.lnkChangePass.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkChangePass_LinkClicked);
             // 
             // Login
             // 
@@ -169,6 +182,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtUser;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.LinkLabel lnkChangePass;
     }
 }
 
