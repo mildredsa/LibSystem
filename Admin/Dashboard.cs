@@ -281,5 +281,22 @@ namespace LibSystem
 
             con.Close();
         }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            con.Open();
+
+            SqlCommand searchCmd = new SqlCommand("SELECT * FROM Books WHERE CONCAT([Accession Number], ' ', Title, ' ', Author, ' ', Genre, ' ', Status) LIKE @searchString", con);
+            searchCmd.Parameters.AddWithValue("searchString", "%" + txtSearch.Text + "%");
+            searchCmd.ExecuteNonQuery();
+
+            SqlDataAdapter adap = new SqlDataAdapter(searchCmd);
+            DataTable dt = new DataTable();
+            adap.Fill(dt);
+
+            grid.DataSource = dt;
+
+            con.Close();
+        }
     }
 }

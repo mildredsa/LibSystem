@@ -71,7 +71,7 @@ namespace LibSystem
                                 }
                                 else if (role == "Borrower")
                                 {
-                                    Transaction transaction = new Transaction(txtUser.Text);
+                                    Transaction transaction = new Transaction(username);
                                     transaction.Show();
                                     this.Hide();
                                 }
