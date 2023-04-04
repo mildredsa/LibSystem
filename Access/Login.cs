@@ -123,18 +123,35 @@ namespace LibSystem
 
         private void lnkChangePass_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            con.Open();
+
+            string username = txtUser.Text;
+
+            SqlCommand retrieve = new SqlCommand("SELECT Username FROM Users WHERE Username = @Username", con);
+            retrieve.Parameters.AddWithValue("Username", username);
+            SqlDataReader reader = retrieve.ExecuteReader();
+
             if (string.IsNullOrEmpty(txtUser.Text))
             {
                 MessageBox.Show("Please input your username.", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Hand);
             }
             else
             {
-                string username = txtUser.Text;
+                if (reader.Read())
+                {
+                    reader.Close();
 
-                ChangePassword changePassword = new ChangePassword(username);
-                changePassword.Show();
-                this.Hide();
+                    ChangePassword changePassword = new ChangePassword(username);
+                    changePassword.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Username doesn't exist.", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                }
             }
+            con.Close();
+
             
         }
     }

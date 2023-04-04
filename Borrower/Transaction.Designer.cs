@@ -191,8 +191,8 @@
             this.cmbGenre.Font = new System.Drawing.Font("Cascadia Code", 8F);
             this.cmbGenre.FormattingEnabled = true;
             this.cmbGenre.Items.AddRange(new object[] {
-            "Fiction",
-            "Non-Fiction"});
+            "Available",
+            "Unavailable"});
             this.cmbGenre.Location = new System.Drawing.Point(113, 216);
             this.cmbGenre.Name = "cmbGenre";
             this.cmbGenre.Size = new System.Drawing.Size(330, 25);
@@ -205,9 +205,9 @@
             this.label2.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(38, 218);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 19);
+            this.label2.Size = new System.Drawing.Size(58, 19);
             this.label2.TabIndex = 35;
-            this.label2.Text = "Genre";
+            this.label2.Text = "Status";
             // 
             // picSearch
             // 

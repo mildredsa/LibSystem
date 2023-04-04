@@ -35,7 +35,6 @@
             this.txtPass = new System.Windows.Forms.TextBox();
             this.btnConfirm = new System.Windows.Forms.Button();
             this.lblUser = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -118,16 +117,7 @@
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(0, 19);
             this.lblUser.TabIndex = 55;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Bookman Old Style", 9F);
-            this.label1.Location = new System.Drawing.Point(61, 228);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 19);
-            this.label1.TabIndex = 56;
-            this.label1.Text = "Hey,";
+            this.lblUser.Visible = false;
             // 
             // ChangePassword
             // 
@@ -135,7 +125,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(361, 522);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblUser);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.label3);
@@ -164,6 +153,5 @@
         private System.Windows.Forms.TextBox txtPass;
         private System.Windows.Forms.Button btnConfirm;
         private System.Windows.Forms.Label lblUser;
-        private System.Windows.Forms.Label label1;
     }
 }

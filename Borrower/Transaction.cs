@@ -73,16 +73,40 @@ namespace LibSystem.Borrower
                             {
                                 users.Close();
 
-                                SqlCommand updateBooks = new SqlCommand("UPDATE Books SET Status = 'Unavailable', Quantity = Quantity - 1 WHERE [Accession Number] = @AccessionNumber", con);
-                                updateBooks.Parameters.AddWithValue("AccessionNumber", txtNo.Text);
-                                updateBooks.ExecuteNonQuery();
+                                SqlCommand chkBorrowed = new SqlCommand("SELECT Username, Returned FROM Borrowed WHERE Username = @Username", con);
+                                chkBorrowed.Parameters.AddWithValue("Username", username);
 
-                                SqlCommand borrowed = new SqlCommand("INSERT INTO Borrowed(Username, [Accession Number]) VALUES(@Username, @AccessionNumber)", con);
-                                borrowed.Parameters.AddWithValue("Username", username);
-                                borrowed.Parameters.AddWithValue("AccessionNumber", txtNo.Text);
-                                borrowed.ExecuteNonQuery();
+                                SqlDataReader borrowing = chkBorrowed.ExecuteReader();
 
-                                MessageBox.Show("Book Successfully Borrowed", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                if (borrowing.Read())
+                                {
+                                    bool userReturned = borrowing.GetBoolean(1);
+
+                                    if (userReturned == true)
+                                    {
+                                        borrowing.Close();
+
+                                        SqlCommand updateBooks = new SqlCommand("UPDATE Books SET Status = 'Unavailable', Quantity = Quantity - 1 WHERE [Accession Number] = @AccessionNumber", con);
+                                        updateBooks.Parameters.AddWithValue("AccessionNumber", txtNo.Text);
+                                        updateBooks.ExecuteNonQuery();
+
+                                        SqlCommand borrowed = new SqlCommand("INSERT INTO Borrowed(Username, [Accession Number]) VALUES(@Username, @AccessionNumber)", con);
+                                        borrowed.Parameters.AddWithValue("Username", username);
+                                        borrowed.Parameters.AddWithValue("AccessionNumber", txtNo.Text);
+                                        borrowed.ExecuteNonQuery();
+
+                                        MessageBox.Show("Book Successfully Borrowed", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Please still haven't returned your borrowed book.", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Book Successfully Returned", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+
                             }
                             else if (userStatus == "Inactive")
                             {
@@ -222,10 +246,10 @@ namespace LibSystem.Borrower
         {
             con.Open();
 
-            SqlCommand genre = new SqlCommand("SELECT * FROM Books WHERE Genre = @Genre", con);
-            genre.Parameters.AddWithValue("Genre", cmbGenre.Text);
+            SqlCommand status = new SqlCommand("SELECT * FROM Books WHERE Status = @Status", con);
+            status.Parameters.AddWithValue("Status", cmbGenre.Text);
 
-            SqlDataAdapter adap = new SqlDataAdapter(genre);
+            SqlDataAdapter adap = new SqlDataAdapter(status);
             DataTable dt = new DataTable();
             adap.Fill(dt);
 
