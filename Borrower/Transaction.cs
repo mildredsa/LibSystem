@@ -99,7 +99,7 @@ namespace LibSystem.Borrower
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Please still haven't returned your borrowed book.", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                                        MessageBox.Show("You still haven't returned your borrowed book.", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                                     }
                                 }
                                 else
@@ -175,20 +175,36 @@ namespace LibSystem.Borrower
                             {
                                 users.Close();
 
-                                SqlCommand updateBooks = new SqlCommand("UPDATE Books SET Status = 'Available', Quantity = Quantity + 1 WHERE [Accession Number] = @AccessionNumber", con);
-                                updateBooks.Parameters.AddWithValue("AccessionNumber", txtNo.Text);
-                                updateBooks.ExecuteNonQuery();
+                                SqlCommand chkBorrower = new SqlCommand("SELECT Username FROM Borrowed WHERE [Accession Number] = @AccessionNumber AND Username = @Username", con);
+                                chkBorrower.Parameters.AddWithValue("Username", username);
+                                chkBorrower.Parameters.AddWithValue("AccessionNumber", txtNo.Text);
 
-                                SqlCommand updateBorrowed = new SqlCommand("UPDATE Borrowed SET Returned = 1 WHERE [Accession Number] = @AccessionNumber", con);
-                                updateBorrowed.Parameters.AddWithValue("AccessionNumber", txtNo.Text);
-                                updateBorrowed.ExecuteNonQuery();
+                                SqlDataReader borrower = chkBorrower.ExecuteReader();
 
-                                SqlCommand borrowed = new SqlCommand("INSERT INTO Returned(Username, [Accession Number]) VALUES(@Username, @AccessionNumber)", con);
-                                borrowed.Parameters.AddWithValue("Username", username);
-                                borrowed.Parameters.AddWithValue("AccessionNumber", txtNo.Text);
-                                borrowed.ExecuteNonQuery();
+                                if (borrower.Read())
+                                {
+                                    borrower.Close();
 
-                                MessageBox.Show("Book Successfully Returned", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    SqlCommand updateBooks = new SqlCommand("UPDATE Books SET Status = 'Available', Quantity = Quantity + 1 WHERE [Accession Number] = @AccessionNumber", con);
+                                    updateBooks.Parameters.AddWithValue("AccessionNumber", txtNo.Text);
+                                    updateBooks.ExecuteNonQuery();
+
+                                    SqlCommand updateBorrowed = new SqlCommand("UPDATE Borrowed SET Returned = 1 WHERE [Accession Number] = @AccessionNumber", con);
+                                    updateBorrowed.Parameters.AddWithValue("AccessionNumber", txtNo.Text);
+                                    updateBorrowed.ExecuteNonQuery();
+
+                                    SqlCommand borrowed = new SqlCommand("INSERT INTO Returned(Username, [Accession Number]) VALUES(@Username, @AccessionNumber)", con);
+                                    borrowed.Parameters.AddWithValue("Username", username);
+                                    borrowed.Parameters.AddWithValue("AccessionNumber", txtNo.Text);
+                                    borrowed.ExecuteNonQuery();
+
+                                    MessageBox.Show("Book Successfully Returned", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("The book has not been borrowed by this user.", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                                }
+                                
                             }
                             else if (userStatus == "Inactive")
                             {
