@@ -46,7 +46,8 @@ namespace LibSystem.Manage
                     activate.Parameters.AddWithValue("Role", cmbRole.Text);
                     activate.ExecuteNonQuery();
 
-                    SqlCommand addBorrower = new SqlCommand("INSERT INTO Borrowers([First Name], [Last Name], Gender) VALUES (@FirstName, @LastName, @Gender)", con);
+                    SqlCommand addBorrower = new SqlCommand("INSERT INTO Borrowers(UserID, [First Name], [Last Name], Gender) VALUES (@UserID, @FirstName, @LastName, @Gender)", con);
+                    addBorrower.Parameters.AddWithValue("UserID", txtUser.Text);
                     addBorrower.Parameters.AddWithValue("FirstName", txtF.Text);
                     addBorrower.Parameters.AddWithValue("LastName", txtL.Text);
                     addBorrower.Parameters.AddWithValue("Gender", cmbGender.Text);

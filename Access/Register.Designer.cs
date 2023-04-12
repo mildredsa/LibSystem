@@ -92,7 +92,7 @@
             this.txtCPass.Location = new System.Drawing.Point(45, 350);
             this.txtCPass.Name = "txtCPass";
             this.txtCPass.Size = new System.Drawing.Size(272, 23);
-            this.txtCPass.TabIndex = 41;
+            this.txtCPass.TabIndex = 3;
             this.txtCPass.UseSystemPasswordChar = true;
             // 
             // label2
@@ -116,7 +116,7 @@
             this.txtPass.Location = new System.Drawing.Point(45, 282);
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(272, 23);
-            this.txtPass.TabIndex = 39;
+            this.txtPass.TabIndex = 1;
             this.txtPass.UseSystemPasswordChar = true;
             // 
             // btnReg
@@ -127,7 +127,7 @@
             this.btnReg.Location = new System.Drawing.Point(45, 428);
             this.btnReg.Name = "btnReg";
             this.btnReg.Size = new System.Drawing.Size(272, 43);
-            this.btnReg.TabIndex = 38;
+            this.btnReg.TabIndex = 4;
             this.btnReg.Text = "Register";
             this.btnReg.UseVisualStyleBackColor = false;
             this.btnReg.Click += new System.EventHandler(this.btnReg_Click);
@@ -153,7 +153,7 @@
             this.txtUser.Location = new System.Drawing.Point(45, 211);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(272, 23);
-            this.txtUser.TabIndex = 35;
+            this.txtUser.TabIndex = 0;
             // 
             // Register
             // 

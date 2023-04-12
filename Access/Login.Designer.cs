@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lnkChangePass = new System.Windows.Forms.LinkLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtPass = new System.Windows.Forms.TextBox();
@@ -36,7 +37,6 @@
             this.btnLog = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtUser = new System.Windows.Forms.TextBox();
-            this.lnkChangePass = new System.Windows.Forms.LinkLabel();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -59,6 +59,17 @@
             this.groupBox1.Size = new System.Drawing.Size(361, 522);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
+            // 
+            // lnkChangePass
+            // 
+            this.lnkChangePass.AutoSize = true;
+            this.lnkChangePass.Location = new System.Drawing.Point(200, 348);
+            this.lnkChangePass.Name = "lnkChangePass";
+            this.lnkChangePass.Size = new System.Drawing.Size(116, 16);
+            this.lnkChangePass.TabIndex = 4;
+            this.lnkChangePass.TabStop = true;
+            this.lnkChangePass.Text = "Forgot Password?";
+            this.lnkChangePass.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkChangePass_LinkClicked);
             // 
             // pictureBox1
             // 
@@ -91,7 +102,7 @@
             this.txtPass.Location = new System.Drawing.Point(44, 313);
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(272, 23);
-            this.txtPass.TabIndex = 39;
+            this.txtPass.TabIndex = 1;
             this.txtPass.UseSystemPasswordChar = true;
             // 
             // btnReg
@@ -102,7 +113,7 @@
             this.btnReg.Location = new System.Drawing.Point(44, 439);
             this.btnReg.Name = "btnReg";
             this.btnReg.Size = new System.Drawing.Size(272, 43);
-            this.btnReg.TabIndex = 38;
+            this.btnReg.TabIndex = 3;
             this.btnReg.Text = "Register";
             this.btnReg.UseVisualStyleBackColor = false;
             this.btnReg.Click += new System.EventHandler(this.btnReg_Click);
@@ -115,7 +126,7 @@
             this.btnLog.Location = new System.Drawing.Point(44, 390);
             this.btnLog.Name = "btnLog";
             this.btnLog.Size = new System.Drawing.Size(272, 43);
-            this.btnLog.TabIndex = 37;
+            this.btnLog.TabIndex = 2;
             this.btnLog.Text = "Login";
             this.btnLog.UseVisualStyleBackColor = false;
             this.btnLog.Click += new System.EventHandler(this.btnLog_Click);
@@ -141,18 +152,7 @@
             this.txtUser.Location = new System.Drawing.Point(44, 232);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(272, 23);
-            this.txtUser.TabIndex = 35;
-            // 
-            // lnkChangePass
-            // 
-            this.lnkChangePass.AutoSize = true;
-            this.lnkChangePass.Location = new System.Drawing.Point(200, 348);
-            this.lnkChangePass.Name = "lnkChangePass";
-            this.lnkChangePass.Size = new System.Drawing.Size(116, 16);
-            this.lnkChangePass.TabIndex = 42;
-            this.lnkChangePass.TabStop = true;
-            this.lnkChangePass.Text = "Forgot Password?";
-            this.lnkChangePass.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkChangePass_LinkClicked);
+            this.txtUser.TabIndex = 0;
             // 
             // Login
             // 

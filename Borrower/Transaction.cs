@@ -73,38 +73,30 @@ namespace LibSystem.Borrower
                             {
                                 users.Close();
 
-                                SqlCommand chkBorrowed = new SqlCommand("SELECT Username, Returned FROM Borrowed WHERE Username = @Username", con);
-                                chkBorrowed.Parameters.AddWithValue("Username", username);
+                                SqlCommand chkBorrowed = new SqlCommand("SELECT Username, Returned FROM Borrowed WHERE Username = @Username AND Returned = 0", con);
+                                chkBorrowed.Parameters.AddWithValue("Username", username);  
 
                                 SqlDataReader borrowing = chkBorrowed.ExecuteReader();
 
                                 if (borrowing.Read())
-                                {
-                                    bool userReturned = borrowing.GetBoolean(1);
-
-                                    if (userReturned == true)
-                                    {
-                                        borrowing.Close();
-
-                                        SqlCommand updateBooks = new SqlCommand("UPDATE Books SET Status = 'Unavailable', Quantity = Quantity - 1 WHERE [Accession Number] = @AccessionNumber", con);
-                                        updateBooks.Parameters.AddWithValue("AccessionNumber", txtNo.Text);
-                                        updateBooks.ExecuteNonQuery();
-
-                                        SqlCommand borrowed = new SqlCommand("INSERT INTO Borrowed(Username, [Accession Number]) VALUES(@Username, @AccessionNumber)", con);
-                                        borrowed.Parameters.AddWithValue("Username", username);
-                                        borrowed.Parameters.AddWithValue("AccessionNumber", txtNo.Text);
-                                        borrowed.ExecuteNonQuery();
-
-                                        MessageBox.Show("Book Successfully Borrowed", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("You still haven't returned your borrowed book.", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-                                    }
+                                {   
+                                    MessageBox.Show("You still haven't returned your borrowed book.", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                                  
                                 }
-                                else
+                                else 
                                 {
-                                    MessageBox.Show("Book Successfully Returned", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    borrowing.Close();
+
+                                    SqlCommand updateBooks = new SqlCommand("UPDATE Books SET Status = 'Unavailable', Quantity = Quantity - 1 WHERE [Accession Number] = @AccessionNumber", con);
+                                    updateBooks.Parameters.AddWithValue("AccessionNumber", txtNo.Text);
+                                    updateBooks.ExecuteNonQuery();
+
+                                    SqlCommand borrowed = new SqlCommand("INSERT INTO Borrowed(Username, [Accession Number]) VALUES(@Username, @AccessionNumber)", con);
+                                    borrowed.Parameters.AddWithValue("Username", username);
+                                    borrowed.Parameters.AddWithValue("AccessionNumber", txtNo.Text);
+                                    borrowed.ExecuteNonQuery();
+
+                                    MessageBox.Show("Book Successfully Borrowed", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
 
                             }
@@ -280,9 +272,8 @@ namespace LibSystem.Borrower
 
             if (response == DialogResult.Yes)
             {
-                new Login().Show();
                 this.Close();
-            }
+                new Login().Show();            }
         }
 
         private void grid_CellClick(object sender, DataGridViewCellEventArgs e)
