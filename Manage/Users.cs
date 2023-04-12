@@ -117,7 +117,7 @@ namespace LibSystem.Manage
 
                 if (chkUser.ExecuteScalar() != null)
                 {
-                    DialogResult response = MessageBox.Show("Are you sure you want to delete this record?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult response = MessageBox.Show("Are you sure you want to delete this record?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                     if (response == DialogResult.Yes)
                     {
